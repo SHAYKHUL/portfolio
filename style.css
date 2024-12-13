@@ -17,39 +17,51 @@ body {
   max-width: 1200px;
   margin: auto;
 }
-
 /* Header */
 .main-header {
   background: #1a1a40;
   color: #fff;
-  padding: 20px 0;
+  height: 80px; /* Fixed height */
+  padding: 0 20px; /* Padding around content */
   position: fixed;
   width: 100%;
   z-index: 1000;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between logo and nav */
+  top: 0; /* Ensure it's at the top */
+  transition: top 0.3s ease-in-out; /* Smooth hide/show */
 }
 
+/* Logo */
 .main-header .logo {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
+  display: flex;
+  align-items: center; /* Center logo vertically */
 }
 
 .main-header .logo span {
   color: #00bcd4;
 }
 
-.main-header nav ul {
+/* Navigation */
+.main-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align nav items to the right */
+}
+
+/* Navigation Links */
+.nav-links {
   display: flex;
   list-style: none;
-  justify-content: flex-end;
-  gap: 20px;
+  gap: 20px; /* Spacing between links */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for show/hide */
 }
 
-.main-header nav ul li {
-  list-style: none;
-}
-
-.main-header nav ul li a {
+.nav-links li a {
   color: #fff;
   text-decoration: none;
   font-size: 1rem;
@@ -57,8 +69,61 @@ body {
   transition: color 0.3s ease;
 }
 
-.main-header nav ul li a:hover {
+.nav-links li a:hover {
   color: #00bcd4;
+}
+
+/* Hamburger Icon for Mobile */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+}
+
+.hamburger .bar {
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Ensure the header elements stay within the header */
+  .main-header {
+    padding: 0 15px; /* Adjust padding for small screens */
+    height: 70px; /* Reduce header height slightly for mobile */
+  }
+
+  .nav-links {
+    display: none; /* Hide nav links by default */
+    position: absolute;
+    top: 80px; /* Position below the header */
+    right: 20px;
+    background-color: #1a1a40;
+    width: 200px;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px); /* Hide nav links initially */
+  }
+
+  .nav-links.active {
+    display: flex; /* Show nav links when active */
+    transform: translateY(0); /* Smooth slide in animation */
+  }
+
+  .hamburger {
+    display: flex; /* Show hamburger on mobile */
+    position: absolute;
+    right: 20px; /* Align hamburger icon to the right */
+    top: 20px; /* Position hamburger icon inside the header */
+  }
 }
 
 /* Hero Section */
@@ -69,13 +134,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 120px 20px 20px; /* Adjusted padding to avoid hiding under header */
-  text-align: center; /* Center text */
+  padding: 120px 20px 20px;
+  text-align: center;
 }
 
 #hero .container {
   display: flex;
-  flex-direction: column; /* Stack text and image */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   max-width: 1200px;
@@ -85,7 +150,7 @@ body {
 .hero-text {
   max-width: 700px;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Text shadow for better contrast */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .hero-text h1 {
@@ -140,7 +205,7 @@ body {
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   margin-top: 20px;
-  max-width: 500px; /* Limit the width of the image */
+  max-width: 500px;
 }
 
 /* About Section */
@@ -231,7 +296,6 @@ body {
 }
 
 /* Skills Section */
-/* Skills Section */
 #skills {
   padding: 80px 0;
   background-color: #f4f4f4;
@@ -246,16 +310,18 @@ body {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Auto-fill with min and max widths */
   gap: 20px;
-  justify-items: center;
+  justify-items: center; /* Centers the cards in each grid cell */
+  padding: 0 10px;
 }
 
 .skill-card {
   background-color: #ffffff;
   border-radius: 12px;
-  width: 180px;
-  height: 220px; /* Set fixed height for consistency */
+  width: 100%; /* Ensures the card takes full width of the grid cell */
+  max-width: 180px; /* Restrict the width of the card */
+  height: 220px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -274,7 +340,7 @@ body {
 .skill-card i {
   font-size: 3rem;
   margin-bottom: 10px;
-  color: #00bcd4; /* Primary accent color */
+  color: #00bcd4;
 }
 
 .skill-card h3 {
@@ -285,13 +351,39 @@ body {
 }
 
 .skill-card:hover i {
-  color: #ff9800; /* Change icon color on hover */
+  color: #ff9800;
 }
 
 .skill-card:hover h3 {
-  color: #ff9800; /* Change text color on hover */
+  color: #ff9800;
 }
 
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 150px minimum on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* 120px minimum on smaller screens */
+  }
+
+  .skill-card {
+    height: 180px; /* Slightly reduce height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* 100px minimum on extra small screens */
+  }
+
+  .skill-card {
+    height: 160px; /* Adjust height for even smaller screens */
+  }
+}
 
 /* Contact Section */
 #contact {
@@ -345,4 +437,118 @@ footer {
 
 footer p {
   font-size: 1rem;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+  .hero-text h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1.2rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .projects-grid img {
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-header nav ul {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  #hero {
+    padding: 120px 20px 20px;
+  }
+
+  #hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-text .btn {
+    padding: 10px 20px;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    max-height: 300px;
+  }
+
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-image {
+    margin-top: 20px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .projects-grid img {
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .project-card img {
+    height: 150px;
+  }
+
+  .skill-card {
+    width: 150px;
+    height: 180px;
+  }
+
+  form button {
+    padding: 12px 25px;
+  }
 }
