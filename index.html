@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Md. Shaykhul</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -16,7 +16,6 @@
   <header class="main-header">
     <div class="container">
       <h1 class="logo">Md.<span>Shaykhul</span></h1>
-      <!-- Hamburger Icon -->
       <div class="hamburger" id="hamburger">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -27,6 +26,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#skills">Skills</a></li>
+          <li><a href="#certificates">Certificates</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -38,7 +38,7 @@
     <div class="container">
       <div class="hero-text">
         <h1>Crafting Modern <span>Web Experiences</span></h1>
-        <p>Hi, my name is Md. Shaykhul Islam. I'm a creative web developer and cyber security enthusiast researcher specializing in clean, intuitive designs and seamless functionality. Security is my top priority</p>
+        <p>Hi, my name is Md. Shaykhul Islam. I'm a creative web developer and cyber security enthusiast specializing in clean, intuitive designs and seamless functionality with security focused.Your data is my top priority.</p>
         <a href="#contact" class="btn primary-btn">Hire Me</a>
         <a href="#projects" class="btn secondary-btn">See My Work</a>
       </div>
@@ -53,9 +53,7 @@
     <div class="container">
       <h2>About Me</h2>
       <div class="about-content">
-        <p>
-          With a passion for technology and design, I specialize in creating user-focused solutions that are both functional and visually appealing. My expertise lies in modern web development, problem-solving, and crafting experiences that drive results.
-        </p>
+        <p>With a passion for technology and design, I specialize in creating user-focused solutions that are both functional and visually appealing. My expertise lies in modern web development, problem-solving, and crafting experiences that drive results.</p>
         <img src="profile.jpg" alt="Your Photo" class="profile-image">
       </div>
     </div>
@@ -82,13 +80,12 @@
             <a href="https://www.facebook.com/share/v/15dvSrD7Gx/?mibextid=rS40aB7S9Ucbxw6v" class="btn">View Details</a>
           </div>
         </div>
-        <!-- Add more cards as needed -->
       </div>
     </div>
   </section>
 
   <!-- Skills Section -->
-  <section id="skills">
+  <section id="skills" class="section">
     <div class="container">
       <h2>My Skills</h2>
       <div class="skills-grid">
@@ -118,7 +115,26 @@
         </div>
       </div>
     </div>
-  </section>  
+  </section>
+
+  <!-- Certificates and Achievements Section -->
+  <section id="certificates" class="section">
+    <div class="container">
+      <h2>Certificates & Achievements</h2>
+      <div class="certificates-grid">
+        <div class="certificate-card">
+          <h3>Ethical Hacking Essentials (EHE)</h3>
+          <p>Issued by EC-Council</p>
+          <a href="https://codered.eccouncil.org/certificate/0cc27e5d-1a46-4e64-ba3f-bad9de9dd651?logged=true" class="btn">View Certificate</a>
+        </div>
+        <div class="certificate-card">
+          <h3>Network Defense Essentials (NDE)</h3>
+          <p>Issued by EC-Council</p>
+          <a href="https://codered.eccouncil.org/certificate/a1a7cd10-dbf8-46b2-b6aa-3aaab751c257?logged=true" class="btn">View Certificate</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Contact Section -->
   <section id="contact" class="section">
@@ -137,49 +153,20 @@
   <footer>
     <div class="container">
       <p>© 2024 Shaykhul. All Rights Reserved.</p>
+      <div class="social-links">
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/SHAYKHUL/" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/shaykhul" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
     </div>
   </footer>
 
   <!-- JavaScript -->
   <script>
-    // Hamburger menu toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
-
-    // Open/Close menu when hamburger is clicked
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-        navLinks.classList.remove('active');
-      }
-    });
-
-    // Auto-hide header on scroll down, show on scroll up
-    let lastScrollTop = 0;
-    const header = document.querySelector('.main-header');
-    window.addEventListener('scroll', () => {
-      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScroll > lastScrollTop) {
-        // Scrolling down
-        header.style.top = "-80px";  // Hide header
-      } else {
-        // Scrolling up
-        header.style.top = "0";  // Show header
-      }
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll
-    });
-
-    // Auto-hide menu after 5 seconds of inactivity
-    let menuTimer;
-    hamburger.addEventListener('click', () => {
-      clearTimeout(menuTimer);  // Clear the timer if the hamburger is clicked
-      menuTimer = setTimeout(() => {
-        navLinks.classList.remove('active');  // Hide menu after 5 seconds of inactivity
-      }, 5000);  // 5 seconds
     });
   </script>
 
